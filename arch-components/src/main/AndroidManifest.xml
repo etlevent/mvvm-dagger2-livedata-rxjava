@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ext.arch.components">
+
+    <application>
+        <provider
+            android:name=".internal.InternalInitializer"
+            android:authorities="${applicationId}.internal.initializer"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
+</manifest>

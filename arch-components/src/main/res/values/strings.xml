@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arch_expand_more">展开全部</string>
+    <string name="arch_expand_less">收起</string>
+</resources>

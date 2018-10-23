@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="ExpandableTextView" tools:ignore="ResourceName">
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:lineSpacingMultiplier" />
+        <attr name="android:maxLines" />
+        <attr name="android:text" />
+        <attr name="expandColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="VerticalTextView" tools:ignore="ResourceName">
+        <attr name="vOrientation" format="enum">
+            <enum name="start" value="0" />
+            <enum name="end" value="1" />
+        </attr>
+        <attr name="vLine" format="enum">
+            <enum name="none" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="vSplitChars" format="string|reference" />
+        <attr name="vTextMarginHorizontal" format="dimension|reference" />
+        <attr name="vTextMarginVertical" format="dimension|reference" />
+        <attr name="vLineWidth" format="dimension|reference" />
+        <attr name="vLineColor" format="color|reference" />
+        <attr name="vLineTextGap" format="dimension|reference" />
+        <attr name="android:gravity" />
+    </declare-styleable>
+    <declare-styleable name="InclinedTextView" tools:ignore="ResourceName">
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="diagonalLength" format="dimension|reference" />
+        <attr name="diagonalHeight" format="dimension|reference" />
+        <attr name="diagonalColor" format="color|reference" />
+        <attr name="mode" format="enum">
+            <enum name="trapezoid" value="0" />
+            <enum name="triangle" value="1" />
+        </attr>
+        <attr name="orientation" format="enum">
+            <enum name="left_top" value="0" />
+            <enum name="left_bottom" value="1" />
+            <enum name="right_top" value="2" />
+            <enum name="right_bottom" value="3" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="Banner" tools:ignore="ResourceName">
+        <attr name="indicatorWidth" format="dimension" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="indicatorGap" format="dimension" />
+        <attr name="indicatorPadding" format="dimension" />
+        <attr name="indicatorDrawable" format="reference" />
+        <attr name="numIndicatorSize" format="dimension" />
+        <attr name="numIndicatorBackground" format="reference" />
+        <attr name="titleHeight" format="dimension" />
+        <attr name="titlePadding" format="dimension" />
+        <attr name="titleBackground" format="reference" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="pagerScrollDuration" format="integer" />
+        <attr name="bannerDuration" format="integer" />
+        <attr name="indicatorStyle" format="enum">
+            <enum name="nonIndicator" value="0" />
+            <enum name="circleIndicator" value="1" />
+            <enum name="numberIndicator" value="2" />
+            <enum name="titleNumberIndicator" value="3" />
+            <enum name="titleCircleIndicator" value="4" />
+            <enum name="titleCircleIndicatorInside" value="5" />
+        </attr>
+        <attr name="indicatorGravity" format="enum">
+            <enum name="left" value="6" />
+            <enum name="center" value="7" />
+            <enum name="right" value="8" />
+        </attr>
+    </declare-styleable>
+</resources>

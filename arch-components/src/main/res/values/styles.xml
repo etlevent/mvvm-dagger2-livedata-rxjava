@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Arch_ToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Arch_ToolBar.Light">
+        <item name="android:textColorSecondary">#fff</item>
+    </style>
+
+    <style name="Arch_ThemeOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <style name="Arch_ThemeOverlay.ActionMenu">
+        <item name="android:textColorSecondary">#fff</item>
+    </style>
+</resources>

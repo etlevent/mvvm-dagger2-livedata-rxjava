@@ -1,0 +1,37 @@
+ext.config = [:]
+
+def config = [:]
+
+def maven = [:]
+def nexus = 'http://common.homelabs.cn:8081/nexus'
+def nexusContent = "${nexus}/content"
+maven.localRepos = getLocalProperties().getProperty('maven.local')
+maven.nexusPublicUrl = "${nexusContent}/groups/public"
+config.maven = maven
+
+ext.config = config
+
+def getLocalProperties() {
+    Properties properties = new Properties()
+    def file = project.rootProject.file('local.properties')
+    if (file.exists()) {
+        properties.load(file.newDataInputStream())
+    }
+    return properties
+}
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url "https://jitpack.io" }
+    handler.flatDir { dirs 'libs' }
+    if (config.maven.localRepos) {
+        handler.maven { url uri(config.maven.localRepos) }
+    } else {
+        println 'you can use local repos with maven.local=xxx in local.properties.'
+    }
+    handler.maven { url config.maven.nexusPublicUrl }
+}
+
+ext.addRepos = this.&addRepos
