@@ -3,30 +3,32 @@ package ext.arch.components.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by roothost on 2018/3/27.
  */
 
 public class PagingBody<T> {
     @Expose
-    private T data;
+    private List<T> data;
     @Expose
     @SerializedName("total")
     private int total;
 
     public PagingBody() {
-        
+
     }
 
-    public PagingBody(T data) {
+    public PagingBody(List<T> data) {
         this.data = data;
     }
 
-    public T getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 

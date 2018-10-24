@@ -15,8 +15,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import cn.homelabs.compat.support.CompatUtils;
 import ext.arch.components.R;
+import ext.arch.components.compact.CompatUtils;
 import ext.arch.components.util.ArchUtils;
 
 public class ExpandableTextView extends LinearLayout implements View.OnClickListener {

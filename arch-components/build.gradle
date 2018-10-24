@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -17,6 +18,11 @@ android {
         sourceCompatibility compile_options.source
         targetCompatibility compile_options.target
     }
+    sourceSets {
+        main {
+            java.srcDirs += ['src/main/kotlin']
+        }
+    }
     resourcePrefix 'arch_'
 }
 
@@ -30,7 +36,6 @@ dependencies {
     implementation deps.support.app_compat
     implementation deps.support.design
     implementation deps.support.recyclerview
-//    api deps.java8function
 //    //greenDao
     api deps.greendao.api
     //gson
@@ -51,4 +56,9 @@ dependencies {
     implementation project(':arch-lifecycle')
     // arch lifecycle
     api deps.arch.ext
+    api 'jdk8.function:jdk8-function:2.0.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

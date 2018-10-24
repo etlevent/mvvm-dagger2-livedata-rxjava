@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import ext.java8.function.Function;
-import ext.java8.function.Predicate;
+import jdk8.function.Function;
+import jdk8.function.Predicate;
 
 public final class ArchCollections {
     private ArchCollections() {

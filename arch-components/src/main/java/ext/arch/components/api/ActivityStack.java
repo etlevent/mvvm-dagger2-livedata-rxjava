@@ -8,7 +8,8 @@ import android.support.annotation.Nullable;
 import java.util.Iterator;
 import java.util.Stack;
 
-import ext.java8.function.Predicate;
+import jdk8.function.Predicate;
+
 
 /**
  * trace Activity instance.

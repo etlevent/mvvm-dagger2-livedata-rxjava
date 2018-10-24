@@ -25,6 +25,7 @@ def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.mavenCentral()
     handler.maven { url "https://jitpack.io" }
+    handler.maven { url 'https://dl.bintray.com/dingling/Maven' }
     handler.flatDir { dirs 'libs' }
     if (config.maven.localRepos) {
         handler.maven { url uri(config.maven.localRepos) }

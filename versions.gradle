@@ -69,6 +69,9 @@ deps.greendao = greendao
 def dagger2 = [:]
 dagger2.api = "com.google.dagger:dagger:$versions.dagger2"
 dagger2.compiler = "com.google.dagger:dagger-compiler:$versions.dagger2"
+dagger2.android = "com.google.dagger:dagger-android:$versions.dagger2"
+dagger2.androidSupport = "com.google.dagger:dagger-android-support:$versions.dagger2"
+dagger2.androidCompiler = "com.google.dagger:dagger-android-processor:$versions.dagger2"
 deps.dagger2 = dagger2
 
 

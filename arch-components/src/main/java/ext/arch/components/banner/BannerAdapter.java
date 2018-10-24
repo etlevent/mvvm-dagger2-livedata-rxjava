@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import ext.arch.components.util.ArchCollections;
-import ext.java8.function.Function;
+import jdk8.function.Function;
 
 /**
  * Created by Administrator on 2017/7/5.

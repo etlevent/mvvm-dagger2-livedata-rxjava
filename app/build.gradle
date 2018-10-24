@@ -33,6 +33,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation deps.dagger2.api
     annotationProcessor deps.dagger2.compiler
+    implementation deps.dagger2.android
+    implementation deps.dagger2.androidSupport
+    annotationProcessor deps.dagger2.androidCompiler
     implementation deps.butterknife.api
     annotationProcessor deps.butterknife.compiler
     implementation project(':arch-components')
