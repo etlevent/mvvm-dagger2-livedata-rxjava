@@ -12,8 +12,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
+import cn.homelabs.pdms.hospital.pojo.User;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -26,8 +26,8 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
     // glide
-//    implementation deps.glide.api
+    implementation deps.glide.api
     compileOnly deps.okhttp3.api
     compileOnly deps.support.app_compat
-//    annotationProcessor deps.glide.compiler
+    annotationProcessor deps.glide.compiler
 }
