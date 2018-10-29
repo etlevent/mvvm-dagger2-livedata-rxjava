@@ -163,13 +163,13 @@ public class Banner extends ViewGroup {
         //todo: before fix boundary confused, keep flag with false
         mLoopViewPager.setBoundaryCaching(false);
         mLoopViewPager.addOnPageChangeListener(mPageChangeListener);
+        mLoopViewPager.setOnDataChangedListener(this::populateFromPagerAdapter);
         addView(mLoopViewPager, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         setAutoPlay(true);
     }
 
     public void setAdapter(@NonNull PagerAdapter adapter) {
         mLoopViewPager.setAdapter(adapter);
-        mLoopViewPager.setOnDataChangedListener(this::populateFromPagerAdapter);
         populateFromPagerAdapter();
     }
 
@@ -501,9 +501,9 @@ public class Banner extends ViewGroup {
         final int count = mLoopViewPager.getAdapter().getCount();
         if (mCircleIndicator != null)
             mCircleIndicator.onPageSelected(position, oldPosition);
-        if (count == 0) return;
-        if (mTitleView != null)
+        if (mTitleView != null) {
             mTitleView.setText(mLoopViewPager.getAdapter().getPageTitle(position));
+        }
         if (mNumberIndicator != null) {
             int number = position + 1;
             mNumberIndicator.setText(number + "/" + count);

@@ -5,6 +5,7 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -19,7 +20,7 @@ public final class ActivityStack {
 
     private static volatile ActivityStack _instance;
 
-    private Stack<Activity> mStack;
+    private Stack<WeakReference<Activity>> mStack;
 
     public static ActivityStack get() {
         if (_instance == null) {
@@ -36,16 +37,34 @@ public final class ActivityStack {
         mStack = new Stack<>();
     }
 
+    private boolean hasActivity(@NonNull Activity activity) {
+        for (WeakReference<Activity> activityWeakReference : mStack) {
+            Activity ref = activityWeakReference.get();
+            if (ref != null && ref.equals(activity)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void push(@NonNull Activity activity) {
-        if (!mStack.contains(activity)) {
-            mStack.push(activity);
+        if (!hasActivity(activity)) {
+            mStack.push(new WeakReference<>(activity));
         }
     }
 
     public void pop(@NonNull Activity activity) {
-        mStack.remove(activity);
-        if (isActivityAvailable(activity)) {
-            activity.finish();
+        for (WeakReference<Activity> activityWeakReference : mStack) {
+            Activity ref = activityWeakReference.get();
+            if (ref == null) {
+                mStack.remove(activityWeakReference);
+            } else if (ref.equals(activity)) {
+                mStack.remove(activityWeakReference);
+                if (isActivityAvailable(ref)) {
+                    ref.finish();
+                }
+                break;
+            }
         }
     }
 
@@ -67,7 +86,7 @@ public final class ActivityStack {
         if (mStack.empty()) {
             return null;
         }
-        return mStack.lastElement();
+        return mStack.lastElement().get();
     }
 
     public int size() {
@@ -75,22 +94,23 @@ public final class ActivityStack {
     }
 
     private void popInternal(@Nullable Predicate<Class<? extends Activity>> filter) {
-        Iterator<Activity> iterator = mStack.iterator();
+        Iterator<WeakReference<Activity>> iterator = mStack.iterator();
         while (iterator.hasNext()) {
-            Activity activity = iterator.next();
+            Activity activity = iterator.next().get();
             if (activity == null) {
+                iterator.remove();
                 continue;
             }
             if (filter == null || filter.test(activity.getClass())) {
+                iterator.remove();
                 if (isActivityAvailable(activity)) {
                     activity.finish();
                 }
-                iterator.remove();
             }
         }
     }
 
-    private static boolean isActivityAvailable(@NonNull Activity activity) {
-        return !activity.isDestroyed() && !activity.isFinishing();
+    private static boolean isActivityAvailable(Activity activity) {
+        return activity != null && !activity.isDestroyed() && !activity.isFinishing();
     }
 }

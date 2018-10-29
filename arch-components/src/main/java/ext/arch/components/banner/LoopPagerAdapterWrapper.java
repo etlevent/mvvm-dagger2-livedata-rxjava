@@ -38,20 +38,35 @@ class LoopPagerAdapterWrapper extends PagerAdapter {
         });
     }
 
-    public PagerAdapter getRealAdapter() {
+    private void toDestroy() {
+        if (mToDestroy.size() == 0)
+            return;
+        for (int i = 0; i < mToDestroy.size(); i++) {
+            ToDestroy toDestroy = mToDestroy.valueAt(i);
+            toDestroy.container.removeView((View) toDestroy.object);
+        }
+        mToDestroy.clear();
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        toDestroy();
+        super.notifyDataSetChanged();
+    }
+
+    PagerAdapter getRealAdapter() {
         return mAdapter;
     }
 
-    public void setBoundaryCaching(boolean flag) {
+    void setBoundaryCaching(boolean flag) {
         mBoundaryCaching = flag;
     }
 
-    public int toInnerPosition(int realPosition) {
-        int position = realPosition + 1;
-        return position;
+    int toInnerPosition(int realPosition) {
+        return realPosition + 1;
     }
 
-    public int toRealPosition(int position) {
+    int toRealPosition(int position) {
         final int realCount = getRealCount();
         if (realCount == 0) return 0;
         int realPosition = (position - 1) % realCount;
@@ -60,7 +75,7 @@ class LoopPagerAdapterWrapper extends PagerAdapter {
         return realPosition;
     }
 
-    public int getRealCount() {
+    int getRealCount() {
         return mAdapter.getCount();
     }
 
@@ -136,6 +151,11 @@ class LoopPagerAdapterWrapper extends PagerAdapter {
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         mAdapter.setPrimaryItem(container, position, object);
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return mAdapter.getItemPosition(object);
     }
 
     static class ToDestroy {

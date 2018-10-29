@@ -11,7 +11,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         ActivityModules.class,
-        PojoModule.class
+        POJOModule.class
 })
 public interface AppComponents extends AndroidInjector<MVVMApplication> {
     @Component.Builder

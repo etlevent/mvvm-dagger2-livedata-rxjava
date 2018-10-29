@@ -8,4 +8,8 @@ public class User {
     @Inject
     public User(String name) {
     }
+
+    public String getName() {
+        return name;
+    }
 }

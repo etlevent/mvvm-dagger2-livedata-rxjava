@@ -18,6 +18,7 @@ import java.util.List;
 
 public class LoopViewPager extends ViewPager {
 
+    private static final String TAG = "LoopViewPager";
     private LoopPagerAdapterWrapper mAdapterWrapper;
     private List<OnPageChangeListener> mOnPageChangeListeners;
     private OnPageChangeListener mOnPageChangeListener;
@@ -164,9 +165,7 @@ public class LoopViewPager extends ViewPager {
         mAdapterWrapper.setBoundaryCaching(mBoundaryCaching);
         mAdapterWrapper.registerDataSetObserver(mDataSetObserver);
         super.setAdapter(mAdapterWrapper);
-        if (adapter.getCount() > 0) {
-            setCurrentItem(0, false);
-        }
+        setCurrentItem(0, false);
     }
 
     @Override
