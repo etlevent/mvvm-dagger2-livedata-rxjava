@@ -10,6 +10,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
+        AppModules.class,
         ActivityModules.class,
         POJOModule.class
 })

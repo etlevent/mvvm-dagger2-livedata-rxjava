@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import cn.homelabs.pdms.hospital.pojo.User;
 import dagger.android.support.DaggerAppCompatActivity;
@@ -22,6 +23,9 @@ public class MainActivity extends DaggerAppCompatActivity
 
     @Inject
     User user;
+    @Named("appName")
+    @Inject
+    String appName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class MainActivity extends DaggerAppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Log.i("Test", "user.name=" + user.getName());
+        Log.i("Test", "appName=" + appName);
     }
 
     @Override
