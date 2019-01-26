@@ -7,6 +7,7 @@ public class User {
 
     @Inject
     public User(String name) {
+        this.name = name;
     }
 
     public String getName() {
